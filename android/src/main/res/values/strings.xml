@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ovulation Health Monitor</string>
+    <string name="app_description">AI-powered ovulation and implantation window prediction using smartphone sensors</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Health Dashboard</string>
+    <string name="dashboard_subtitle">Daily monitoring &amp; predictions</string>
+    <string name="status_all_tests_completed">All tests completed</string>
+    <string name="ovulation_predicted">Ovulation Predicted in 3 days</string>
+    <string name="implantation_window">Implantation Window: 7-11 days from now</string>
+
+    <!-- Tests -->
+    <string name="start_test">Start Health Test</string>
+    <string name="ferning_test">Saliva Ferning Analysis</string>
+    <string name="voice_test">Voice Frequency Analysis</string>
+    <string name="temperature_test">Body Temperature Monitoring</string>
+    <string name="cardiac_test">Heart Rate &amp; HRV</string>
+
+    <!-- Results -->
+    <string name="recent_data">Recent Data</string>
+    <string name="temperature">Temperature</string>
+    <string name="heart_rate">Heart Rate</string>
+    <string name="voice_frequency">Voice Frequency</string>
+    <string name="ferning_pattern">Ferning Pattern</string>
+
+    <!-- Predictions -->
+    <string name="ovulation_prediction">Ovulation Prediction</string>
+    <string name="implantation_prediction">Implantation Window</string>
+    <string name="confidence">Confidence</string>
+    <string name="high_confidence">High Confidence</string>
+    <string name="moderate_confidence">Moderate Confidence</string>
+    <string name="low_confidence">Low Confidence</string>
+
+    <!-- Metrics -->
+    <string name="ferning_analysis">Ferning Analysis</string>
+    <string name="voice_analysis">Voice Analysis</string>
+    <string name="temperature_monitoring">Temperature Monitoring</string>
+    <string name="cardiac_indicators">Cardiac Indicators</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="daily_test_time">Daily Test Time</string>
+    <string name="cycle_length">Cycle Length</string>
+    <string name="notifications">Notifications</string>
+    <string name="admin_email">Admin Email</string>
+    <string name="data_backup">Data Backup</string>
+    <string name="timezone">Timezone</string>
+
+    <!-- Alerts -->
+    <string name="ovulation_detected">Ovulation Detected</string>
+    <string name="implantation_window_active">Implantation Window Active</string>
+    <string name="test_reminder">Daily Health Test Reminder</string>
+    <string name="data_synced">Data Successfully Synced</string>
+    <string name="sync_failed">Data Sync Failed</string>
+
+    <!-- Permissions -->
+    <string name="camera_permission_required">Camera permission required for saliva analysis</string>
+    <string name="microphone_permission_required">Microphone permission required for voice analysis</string>
+    <string name="sensor_permission_required">Sensor permission required for temperature monitoring</string>
+    <string name="location_permission_required">Location permission required</string>
+
+    <!-- General -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="done">Done</string>
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+
+    <!-- Error Messages -->
+    <string name="error_network_unavailable">Network connection unavailable</string>
+    <string name="error_camera_unavailable">Camera not available</string>
+    <string name="error_microphone_unavailable">Microphone not available</string>
+    <string name="error_loading_data">Error loading data</string>
+    <string name="error_saving_data">Error saving data</string>
+</resources>

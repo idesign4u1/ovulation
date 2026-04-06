@@ -11,6 +11,7 @@ import android.os.BatteryManager
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
+import com.ovulation.health.OvulationHealthApp
 import com.ovulation.health.data.db.OvulationDatabase
 import com.ovulation.health.data.model.TemperatureData
 import kotlinx.coroutines.CoroutineScope
@@ -118,7 +119,9 @@ class TouchTemperatureAnalyzer(
                 "kalman=${"%.2f".format(kalmanEstimate)} °C"
         )
 
+        val subjectId = OvulationHealthApp.authManager.currentUser.value?.id ?: return
         val data = TemperatureData(
+            subjectId = subjectId,
             testDate = LocalDateTime.now(),
             temperature = kalmanEstimate,
             measurementMethod = "TOUCH_PASSIVE",

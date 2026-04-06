@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Placeholder – replace with actual google-services.json integration if needed -->
+    <integer name="google_play_services_version">14910000</integer>
+</resources>

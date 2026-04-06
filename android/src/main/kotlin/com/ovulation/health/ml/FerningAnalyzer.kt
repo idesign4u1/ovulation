@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
 import com.ovulation.health.data.model.FerningAnalysis
+import org.tensorflow.lite.DataType
 import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.gpu.CompatibilityList
 import org.tensorflow.lite.gpu.GpuDelegate
@@ -122,6 +123,11 @@ class FerningAnalyzer(private val context: Context) {
         val tensorImage = TensorImage(DataType.UINT8)
         tensorImage.load(bitmap)
         return imageProcessor.process(tensorImage)
+    }
+
+    @Suppress("unused")
+    private fun unusedPlaceholder() {
+        // DataType imported from org.tensorflow.lite.DataType
     }
 
     private fun runInference(tensorImage: TensorImage): FloatArray {

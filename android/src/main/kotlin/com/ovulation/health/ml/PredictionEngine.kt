@@ -53,6 +53,7 @@ class PredictionEngine {
         }
 
         return OvulationPrediction(
+            subjectId = "",           // caller must .copy(subjectId = ...) before persisting
             predictionDate = now,
             estimatedOvulationDate = estimatedOvulationDate,
             confidence = compositeScore,
@@ -92,10 +93,11 @@ class PredictionEngine {
         }
 
         return ImplantationWindow(
+            subjectId = "",           // caller must .copy(subjectId = ...) before persisting
             predictionDate = LocalDateTime.now(),
             estimatedStartDate = windowStart,
             estimatedEndDate = windowEnd,
-            confidence = ovulationPrediction.confidence * 0.95f, // Slightly lower confidence than ovulation
+            confidence = ovulationPrediction.confidence * 0.95f,
             biomarkers = biomarkers,
             status = status,
             notes = "Implantation window predicted based on ovulation date"

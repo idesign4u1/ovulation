@@ -13,6 +13,7 @@ import android.media.ImageReader
 import android.os.Handler
 import android.os.HandlerThread
 import android.view.Surface
+import com.ovulation.health.OvulationHealthApp
 import com.ovulation.health.data.db.OvulationDatabase
 import com.ovulation.health.data.model.CardiacData
 import kotlinx.coroutines.CoroutineScope
@@ -194,7 +195,9 @@ class CameraPPGDetector(
 
             Timber.d("PPG result: HR=$hr BPM, HRV=${"%.1f".format(hrv)} ms")
 
+            val subjectId = OvulationHealthApp.authManager.currentUser.value?.id ?: return@launch
             val cardiacData = CardiacData(
+                subjectId = subjectId,
                 testDate = LocalDateTime.now(),
                 heartRate = hr,
                 heartRateVariability = hrv,

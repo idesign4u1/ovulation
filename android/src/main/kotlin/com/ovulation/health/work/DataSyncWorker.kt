@@ -26,7 +26,7 @@ class DataSyncWorker(
             Timber.d("Starting data sync worker")
 
             // Get unsync reports from database
-            val unsyncedReports = database.adminReportDao().getUnsyncedReports()
+            val unsyncedReports = database.adminReportDao().getUnsynced()
 
             Timber.d("Found ${unsyncedReports.size} unsynced reports")
 
@@ -72,7 +72,7 @@ class DataSyncWorker(
         try {
             // Send notification to admin
             val alertRequest = com.ovulation.health.network.AlertRequest(
-                userId = report.userId,
+                userId = report.subjectId,
                 alertType = "DATA_SYNC_SUCCESS",
                 severity = "INFO",
                 message = "Health data synced successfully",

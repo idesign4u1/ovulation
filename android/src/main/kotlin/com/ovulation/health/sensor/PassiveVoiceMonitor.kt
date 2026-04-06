@@ -4,6 +4,7 @@ import android.content.Context
 import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
+import com.ovulation.health.OvulationHealthApp
 import com.ovulation.health.data.db.OvulationDatabase
 import com.ovulation.health.data.model.VoiceAnalysis
 import kotlinx.coroutines.CoroutineScope
@@ -190,7 +191,9 @@ class PassiveVoiceMonitor(
             val baseline = getBaselineF0()
             val shift = avgF0 - baseline
 
+            val subjectId = OvulationHealthApp.authManager.currentUser.value?.id ?: return@launch
             val analysis = VoiceAnalysis(
+                subjectId = subjectId,
                 testDate = LocalDateTime.now(),
                 audioUri = "passive_session",
                 fundamentalFrequency = avgF0,

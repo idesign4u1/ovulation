@@ -7,6 +7,8 @@ import com.ovulation.health.data.model.*
 
 @Database(
     entities = [
+        User::class,
+        AuthSession::class,
         FerningAnalysis::class,
         VoiceAnalysis::class,
         TemperatureData::class,
@@ -16,11 +18,13 @@ import com.ovulation.health.data.model.*
         DailyHealthSummary::class,
         AdminReport::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(DateTimeConverters::class, EnumConverters::class)
 abstract class OvulationDatabase : RoomDatabase() {
+    abstract fun userDao(): UserDao
+    abstract fun authSessionDao(): AuthSessionDao
     abstract fun ferningAnalysisDao(): FerningAnalysisDao
     abstract fun voiceAnalysisDao(): VoiceAnalysisDao
     abstract fun temperatureDataDao(): TemperatureDataDao

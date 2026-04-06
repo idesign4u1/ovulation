@@ -1,113 +1,171 @@
 package com.ovulation.health.data.model
 
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.time.LocalDateTime
 
-// Saliva Ferning Analysis Data
-@Entity(tableName = "ferning_analysis")
+// ---------------------------------------------------------------------------
+// Every health entity carries a subjectId so the admin can query
+// data per-subject and the app never mixes readings across users.
+// ---------------------------------------------------------------------------
+
+@Entity(
+    tableName = "ferning_analysis",
+    foreignKeys = [ForeignKey(
+        entity = User::class,
+        parentColumns = ["id"],
+        childColumns = ["subjectId"],
+        onDelete = ForeignKey.CASCADE
+    )],
+    indices = [Index("subjectId")]
+)
 data class FerningAnalysis(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val subjectId: String,
     val testDate: LocalDateTime,
-    val imageUri: String, // Path to the captured image
-    val ferningPattern: FerningPattern, // NONE, PARTIAL, FULL
-    val confidence: Float, // 0-1 confidence score
+    val imageUri: String,
+    val ferningPattern: FerningPattern,
+    val confidence: Float,
     val notes: String = ""
 ) {
-    enum class FerningPattern {
-        NONE,      // No ferning
-        PARTIAL,   // Partial ferning pattern
-        FULL       // Full ferning pattern (indicates high estrogen)
-    }
+    enum class FerningPattern { NONE, PARTIAL, FULL }
 }
 
-// Voice Analysis Data
-@Entity(tableName = "voice_analysis")
+@Entity(
+    tableName = "voice_analysis",
+    foreignKeys = [ForeignKey(
+        entity = User::class,
+        parentColumns = ["id"],
+        childColumns = ["subjectId"],
+        onDelete = ForeignKey.CASCADE
+    )],
+    indices = [Index("subjectId")]
+)
 data class VoiceAnalysis(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val subjectId: String,
     val testDate: LocalDateTime,
-    val audioUri: String, // Path to recorded audio
-    val fundamentalFrequency: Float, // Hz
-    val frequencyShift: Float, // Hz change from baseline
-    val shimmer: Float, // Voice quality metric
-    val jitter: Float, // Voice stability metric
+    val audioUri: String,
+    val fundamentalFrequency: Float,
+    val frequencyShift: Float,
+    val shimmer: Float,
+    val jitter: Float,
     val notes: String = ""
 )
 
-// Body Temperature Data
-@Entity(tableName = "temperature_data")
+@Entity(
+    tableName = "temperature_data",
+    foreignKeys = [ForeignKey(
+        entity = User::class,
+        parentColumns = ["id"],
+        childColumns = ["subjectId"],
+        onDelete = ForeignKey.CASCADE
+    )],
+    indices = [Index("subjectId")]
+)
 data class TemperatureData(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val subjectId: String,
     val testDate: LocalDateTime,
-    val temperature: Float, // Celsius
-    val measurementMethod: String, // BATTERY, TOUCH_SCREEN, etc.
-    val accuracy: Float, // Estimated measurement accuracy
+    val temperature: Float,
+    val measurementMethod: String,
+    val accuracy: Float,
     val notes: String = ""
 )
 
-// Heart Rate and HRV Data
-@Entity(tableName = "cardiac_data")
+@Entity(
+    tableName = "cardiac_data",
+    foreignKeys = [ForeignKey(
+        entity = User::class,
+        parentColumns = ["id"],
+        childColumns = ["subjectId"],
+        onDelete = ForeignKey.CASCADE
+    )],
+    indices = [Index("subjectId")]
+)
 data class CardiacData(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val subjectId: String,
     val testDate: LocalDateTime,
-    val heartRate: Int, // BPM
-    val heartRateVariability: Float, // HRV in ms
-    val oxygenSaturation: Float = 0f, // SpO2 percentage
+    val heartRate: Int,
+    val heartRateVariability: Float,
+    val oxygenSaturation: Float = 0f,
     val notes: String = ""
 )
 
-// Ovulation Prediction Result
-@Entity(tableName = "ovulation_predictions")
+@Entity(
+    tableName = "ovulation_predictions",
+    foreignKeys = [ForeignKey(
+        entity = User::class,
+        parentColumns = ["id"],
+        childColumns = ["subjectId"],
+        onDelete = ForeignKey.CASCADE
+    )],
+    indices = [Index("subjectId")]
+)
 data class OvulationPrediction(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val subjectId: String,
     val predictionDate: LocalDateTime,
     val estimatedOvulationDate: LocalDateTime,
-    val confidence: Float, // 0-1 confidence score
+    val confidence: Float,
     val ferningScore: Float,
     val voiceScore: Float,
     val temperatureScore: Float,
     val cardiacScore: Float,
-    val compositeScore: Float, // Combined score
-    val status: PredictionStatus, // PREDICTED, CONFIRMED, PASSED
+    val compositeScore: Float,
+    val status: PredictionStatus,
     val notes: String = ""
 ) {
-    enum class PredictionStatus {
-        PREDICTED,  // Ovulation is predicted
-        CONFIRMED,  // Ovulation is confirmed by multiple indicators
-        PASSED      // The predicted window has passed
-    }
+    enum class PredictionStatus { PREDICTED, CONFIRMED, PASSED }
 }
 
-// Window of Implantation Prediction
-@Entity(tableName = "implantation_windows")
+@Entity(
+    tableName = "implantation_windows",
+    foreignKeys = [ForeignKey(
+        entity = User::class,
+        parentColumns = ["id"],
+        childColumns = ["subjectId"],
+        onDelete = ForeignKey.CASCADE
+    )],
+    indices = [Index("subjectId")]
+)
 data class ImplantationWindow(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val subjectId: String,
     val predictionDate: LocalDateTime,
     val estimatedStartDate: LocalDateTime,
     val estimatedEndDate: LocalDateTime,
-    val confidence: Float, // 0-1 confidence score
-    val biomarkers: String, // JSON encoded biomarker data
+    val confidence: Float,
+    val biomarkers: String,
     val status: WindowStatus,
     val notes: String = ""
 ) {
-    enum class WindowStatus {
-        PREDICTED,  // Window is predicted
-        ACTIVE,     // Window is currently active
-        PASSED      // Window has passed
-    }
+    enum class WindowStatus { PREDICTED, ACTIVE, PASSED }
 }
 
-// Daily Health Summary
-@Entity(tableName = "daily_health_summary")
+@Entity(
+    tableName = "daily_health_summary",
+    foreignKeys = [ForeignKey(
+        entity = User::class,
+        parentColumns = ["id"],
+        childColumns = ["subjectId"],
+        onDelete = ForeignKey.CASCADE
+    )],
+    indices = [Index("subjectId")]
+)
 data class DailyHealthSummary(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val subjectId: String,
     val date: LocalDateTime,
     val allTestsCompleted: Boolean,
     val ferningAnalysisId: Int? = null,
@@ -118,25 +176,20 @@ data class DailyHealthSummary(
     val menstrualPhase: MenstrualPhase,
     val notes: String = ""
 ) {
-    enum class MenstrualPhase {
-        MENSTRUATION,
-        FOLLICULAR,
-        OVULATION,
-        LUTEAL
-    }
+    enum class MenstrualPhase { MENSTRUATION, FOLLICULAR, OVULATION, LUTEAL }
 }
 
-// Admin Report Data
 @Entity(tableName = "admin_reports")
 data class AdminReport(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val subjectId: String,           // the subject this report is about
+    val adminId: String,             // the admin who owns this report
     val reportDate: LocalDateTime,
     val startDate: LocalDateTime,
     val endDate: LocalDateTime,
-    val userId: String,
-    val reportData: String, // JSON encoded report data
-    val graphData: String, // JSON encoded graph data
+    val reportData: String,
+    val graphData: String,
     val synced: Boolean = false,
     val syncedDate: LocalDateTime? = null
 )

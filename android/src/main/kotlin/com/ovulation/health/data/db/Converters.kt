@@ -8,55 +8,23 @@ import java.time.format.DateTimeFormatter
 class DateTimeConverters {
     private val formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
 
-    @TypeConverter
-    fun fromLocalDateTime(value: LocalDateTime?): String? {
-        return value?.format(formatter)
-    }
-
-    @TypeConverter
-    fun toLocalDateTime(value: String?): LocalDateTime? {
-        return value?.let { LocalDateTime.parse(it, formatter) }
-    }
+    @TypeConverter fun fromLocalDateTime(v: LocalDateTime?): String? = v?.format(formatter)
+    @TypeConverter fun toLocalDateTime(v: String?): LocalDateTime? = v?.let { LocalDateTime.parse(it, formatter) }
 }
 
 class EnumConverters {
-    @TypeConverter
-    fun fromFerningPattern(value: FerningAnalysis.FerningPattern?): String? {
-        return value?.name
-    }
+    @TypeConverter fun fromFerning(v: FerningAnalysis.FerningPattern?): String? = v?.name
+    @TypeConverter fun toFerning(v: String?): FerningAnalysis.FerningPattern? = v?.let { FerningAnalysis.FerningPattern.valueOf(it) }
 
-    @TypeConverter
-    fun toFerningPattern(value: String?): FerningAnalysis.FerningPattern? {
-        return value?.let { FerningAnalysis.FerningPattern.valueOf(it) }
-    }
+    @TypeConverter fun fromPredStatus(v: OvulationPrediction.PredictionStatus?): String? = v?.name
+    @TypeConverter fun toPredStatus(v: String?): OvulationPrediction.PredictionStatus? = v?.let { OvulationPrediction.PredictionStatus.valueOf(it) }
 
-    @TypeConverter
-    fun fromPredictionStatus(value: OvulationPrediction.PredictionStatus?): String? {
-        return value?.name
-    }
+    @TypeConverter fun fromWinStatus(v: ImplantationWindow.WindowStatus?): String? = v?.name
+    @TypeConverter fun toWinStatus(v: String?): ImplantationWindow.WindowStatus? = v?.let { ImplantationWindow.WindowStatus.valueOf(it) }
 
-    @TypeConverter
-    fun toPredictionStatus(value: String?): OvulationPrediction.PredictionStatus? {
-        return value?.let { OvulationPrediction.PredictionStatus.valueOf(it) }
-    }
+    @TypeConverter fun fromPhase(v: DailyHealthSummary.MenstrualPhase?): String? = v?.name
+    @TypeConverter fun toPhase(v: String?): DailyHealthSummary.MenstrualPhase? = v?.let { DailyHealthSummary.MenstrualPhase.valueOf(it) }
 
-    @TypeConverter
-    fun fromWindowStatus(value: ImplantationWindow.WindowStatus?): String? {
-        return value?.name
-    }
-
-    @TypeConverter
-    fun toWindowStatus(value: String?): ImplantationWindow.WindowStatus? {
-        return value?.let { ImplantationWindow.WindowStatus.valueOf(it) }
-    }
-
-    @TypeConverter
-    fun fromMenstrualPhase(value: DailyHealthSummary.MenstrualPhase?): String? {
-        return value?.name
-    }
-
-    @TypeConverter
-    fun toMenstrualPhase(value: String?): DailyHealthSummary.MenstrualPhase? {
-        return value?.let { DailyHealthSummary.MenstrualPhase.valueOf(it) }
-    }
+    @TypeConverter fun fromRole(v: UserRole?): String? = v?.name
+    @TypeConverter fun toRole(v: String?): UserRole? = v?.let { UserRole.valueOf(it) }
 }

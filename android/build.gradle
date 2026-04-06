@@ -93,9 +93,8 @@ dependencies {
     // ---- TensorFlow Lite ----
     implementation 'org.tensorflow:tensorflow-lite:2.14.0'
     implementation 'org.tensorflow:tensorflow-lite-support:0.4.4'
-    implementation('org.tensorflow:tensorflow-lite-gpu:2.14.0') {
-        exclude group: 'org.tensorflow', module: 'tensorflow-lite'
-    }
+    // GPU delegate disabled for initial build – re-enable after stable APK is produced
+    // implementation('org.tensorflow:tensorflow-lite-gpu:2.14.0') { ... }
 
     // ---- Charts ----
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'

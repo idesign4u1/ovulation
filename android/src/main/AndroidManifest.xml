@@ -1,30 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Camera permissions for visual analysis -->
+    <!-- ===== Camera ===== -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
 
-    <!-- Microphone permissions for voice analysis -->
+    <!-- ===== Microphone (passive voice analysis during calls) ===== -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-    <!-- Sensor permissions -->
+    <!-- ===== Phone call state (triggers voice analysis) ===== -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- ===== Body sensors ===== -->
     <uses-permission android:name="android.permission.BODY_SENSORS" />
 
-    <!-- Network permissions for syncing data -->
+    <!-- ===== System overlay (camera-area hot-zone) ===== -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- ===== Foreground service ===== -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <!-- Needed to keep the service alive when the screen is off -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- ===== Network ===== -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <!-- Storage permissions -->
+    <!-- ===== Storage ===== -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <!-- Notification permissions -->
+    <!-- ===== Notifications ===== -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
-    <!-- Schedule exact alarms for daily tests -->
+    <!-- ===== Alarms (hourly snaps + legacy daily trigger) ===== -->
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.SET_ALARM" />
+
+    <!-- ===== Boot (restart service after reboot) ===== -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -36,6 +55,7 @@
         android:theme="@style/Theme.OvulationHealth"
         android:name=".OvulationHealthApp">
 
+        <!-- ===== Main Activity ===== -->
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
@@ -46,16 +66,21 @@
             </intent-filter>
         </activity>
 
-        <!-- Services -->
+        <!-- ===== Foreground monitoring service (runs all day) ===== -->
         <service
-            android:name=".service.SensorDataCollectionService"
-            android:foregroundServiceType="sensorUsage" />
+            android:name=".service.ContinuousMonitoringService"
+            android:exported="false"
+            android:foregroundServiceType="camera|microphone|dataSync">
+        </service>
 
+        <!-- ===== Data-sync service (upload to admin server) ===== -->
         <service
             android:name=".service.DataSyncService"
             android:exported="false" />
 
-        <!-- Broadcast Receivers -->
+        <!-- ===== Broadcast Receivers ===== -->
+
+        <!-- Legacy daily alarm (kept for backward compat) -->
         <receiver
             android:name=".receiver.DailyTestReceiver"
             android:exported="false">
@@ -64,7 +89,26 @@
             </intent-filter>
         </receiver>
 
-        <!-- Notification Channel -->
+        <!-- Phone call state – triggers passive voice analysis -->
+        <receiver
+            android:name=".receiver.PhoneCallReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Restart monitoring service after device reboot -->
+        <receiver
+            android:name=".receiver.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Notification Channel meta -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

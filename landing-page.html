@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>נדל"ן בבולגריה - השקעה בביטחון</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Assistant', sans-serif;
+        }
+
+        /* הגדרות כלליות */
+        .landing-page-wrapper {
+            direction: rtl;
+            text-align: right;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        /* תיבת פתיחה */
+        .intro-section-luxury {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 40px 30px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .main-title-gold {
+            color: #D4AF37;
+            font-size: 2.6rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            pointer-events: none;
+        }
+
+        .title-separator {
+            width: 60px;
+            height: 3px;
+            background: #D4AF37;
+            margin: 0 auto 25px;
+        }
+
+        .intro-section-luxury p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+
+        .highlight-gold-box {
+            background: rgba(212, 175, 55, 0.08);
+            padding: 25px;
+            border-right: 4px solid #D4AF37;
+            margin: 30px 0;
+        }
+
+        .highlight-gold-box h4 {
+            margin: 0 0 10px 0;
+            color: #D4AF37;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .highlight-gold-box p {
+            color: #e0e0e0;
+            font-weight: 300;
+        }
+
+        /* גריד מדריכים */
+        .instructors-title {
+            text-align: center;
+            color: #D4AF37;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 50px 0 35px;
+        }
+
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .instructor-card {
+            background: #0a0a0a;
+            padding: 35px 20px;
+            border-radius: 12px;
+            border-top: 4px solid #D4AF37;
+            text-align: center;
+        }
+
+        .instructor-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #D4AF37;
+            margin-bottom: 15px;
+        }
+
+        .instructor-card h3 {
+            color: #D4AF37;
+            font-size: 1.7rem;
+            margin: 10px 0;
+            font-weight: 800;
+        }
+
+        .instructor-card p {
+            color: #e0e0e0;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* סקשן ההצעה */
+        .gold-offer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(0,0,0,1) 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 15px;
+            max-width: 550px;
+            margin: 50px auto;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .benefit-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .benefit-label-gold {
+            color: #D4AF37;
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .old-price-line {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1.6rem;
+            text-decoration: line-through;
+            text-decoration-color: #D4AF37;
+            font-weight: 300;
+        }
+
+        .new-price-highlight {
+            color: #D4AF37;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .punchline-box {
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 20px;
+            margin-top: 5px;
+        }
+
+        .punchline-text {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        /* תיבת הטבות פרימיום */
+        .premium-benefits-box {
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 25px;
+            border: 2px solid #D4AF37;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        .benefit-item {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            color: #e0e0e0;
+        }
+
+        .gold-text {
+            color: #D4AF37;
+            font-weight: 800;
+        }
+
+        /* כפתור */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            margin-top: 25px;
+            background: linear-gradient(135deg, #D4AF37 0%, #f0d570 100%);
+            color: #000000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .cta-button-container {
+            text-align: center;
+        }
+
+        /* סילבוס */
+        .syllabus-wrapper {
+            direction: rtl;
+            text-align: right;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .syllabus-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .syllabus-header h2 {
+            color: #D4AF37;
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .syllabus-header p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .syllabus-header .gold-line {
+            width: 60px;
+            height: 3px;
+            background: #D4AF37;
+            margin: 20px auto 0;
+        }
+
+        /* גריד הכרטיסים */
+        .syllabus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .day-card {
+            background: #0a0a0a;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-8px);
+            border-color: #D4AF37;
+        }
+
+        .card-head {
+            background: #151515;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .card-head .phase {
+            color: #D4AF37;
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .card-head h3 {
+            color: #D4AF37;
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .goal-text {
+            font-weight: 700;
+            color: #D4AF37;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            display: block;
+        }
+
+        .points-list {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        .points-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 1.05rem;
+            line-height: 1.4;
+            font-weight: 300;
+            color: #e0e0e0;
+        }
+
+        .points-list .icon {
+            margin-left: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* סקשן המחיר */
+        .special-offer-box {
+            text-align: center;
+            margin: 50px auto;
+            padding: 30px 20px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(0,0,0,1) 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 20px;
+            max-width: 550px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+        }
+
+        .offer-title {
+            color: #D4AF37;
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .price-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            margin-bottom: 20px;
+        }
+
+        .old-price-syllabus {
+            font-size: 1.6rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: line-through;
+            text-decoration-color: #D4AF37;
+            font-weight: 300;
+        }
+
+        .new-price-syllabus {
+            font-size: 4.2rem;
+            color: #D4AF37;
+            font-weight: 800;
+            line-height: 0.9;
+        }
+
+        .punchline-text-syllabus {
+            color: #ffffff;
+            font-size: 1.35rem;
+            font-weight: 400;
+            line-height: 1.5;
+            max-width: 500px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 15px;
+        }
+
+        .syllabus-footer {
+            text-align: center;
+            background: rgba(212, 175, 55, 0.03);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px dashed rgba(212, 175, 55, 0.5);
+            margin-top: 20px;
+        }
+
+        .syllabus-footer p {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .syllabus-footer strong {
+            color: #D4AF37;
+            font-weight: 800;
+        }
+
+        /* Footer */
+        .luxury-footer {
+            width: 100%;
+            background-color: #000000;
+            border-top: 3px solid #D4AF37;
+            margin-top: 80px;
+            padding: 60px 20px;
+            direction: rtl;
+            text-align: center;
+            font-family: 'Assistant', sans-serif;
+            color: #ffffff;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-label {
+            color: #D4AF37;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .contact-group {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .contact-group strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            color: #D4AF37;
+        }
+
+        .contact-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #D4AF37;
+        }
+
+        .delivery-info {
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 25px 0;
+            margin: 40px 0;
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: #e0e0e0;
+        }
+
+        .delivery-info strong {
+            color: #D4AF37;
+            font-weight: 800;
+        }
+
+        .legal-links {
+            margin-bottom: 25px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .legal-links a:hover {
+            color: #D4AF37;
+        }
+
+        .security-info {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .security-info strong {
+            color: #D4AF37;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title-gold { font-size: 1.8rem; }
+            .new-price-highlight { font-size: 3.2rem; }
+            .new-price-syllabus { font-size: 3.5rem; }
+            .punchline-text { font-size: 1.1rem; }
+            .punchline-text-syllabus { font-size: 1.15rem; }
+            .gold-offer-container { margin: 30px 10px; padding: 25px 15px; }
+            .special-offer-box { padding: 25px 15px; margin: 40px 10px; }
+            .luxury-footer { padding: 40px 15px; }
+            .contact-grid { gap: 25px; }
+            .contact-link { font-size: 1.1rem; }
+            .footer-label { font-size: 1.1rem; }
+            .cta-button { padding: 12px 30px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="landing-page-wrapper">
+
+    <div class="intro-section-luxury">
+        <div class="main-title-gold">
+            נדל"ן בבולגריה: הביטחון הכלכלי החדש שלכם
+        </div>
+        <div class="title-separator"></div>
+
+        <p>אנחנו יודעים איך זה מרגיש כשההון שצברתם נשאר סטטי. רבים מהמשקיעים חולקים את אותו אתגר: הרצון לייצר <strong>רווחיות דו-ספרתית</strong> אל מול החשש מהלא נודע.</p>
+
+        <div class="highlight-gold-box">
+            <h4>החדשות הטובות? אתם לא חייבים לעבור את זה לבד.</h4>
+            <p>בולגריה מציעה חלון הזדמנויות נדיר – שילוב של מחירי כניסה נגישים וצמיחה עקבית.</p>
+        </div>
+
+        <div class="cta-button-container">
+            <a href="https://morning.co.il" class="cta-button">אני רוצה להצטרף לקורס</a>
+        </div>
+    </div>
+
+    <div class="instructors-title">הכירו את המדריכים שלכם</div>
+    <div class="instructors-grid">
+        <div class="instructor-card">
+            <img src="https://bulgariasmartinvest.com/wp-content/uploads/2026/03/%D7%99%D7%94%D7%9C%D7%99.webp" alt="יהלי סמואלס" class="instructor-img">
+            <h3>יהלי סמואלס</h3>
+            <p>מובילה את פעילות החברה בשילוב מדויק בין ניהול מקצועי לליווי אישי בשטח.</p>
+        </div>
+        <div class="instructor-card">
+            <img src="https://bulgariasmartinvest.com/wp-content/uploads/2026/03/ברק.webp" alt="ברק צור" class="instructor-img">
+            <h3>ברק צור</h3>
+            <p>אסטרטג השקעות ומשקיע פעיל, מומחה באיתור הזדמנויות חריגות בשוק.</p>
+        </div>
+    </div>
+
+    <div class="gold-offer-container">
+        <div class="benefit-display">
+            <span class="benefit-label-gold">הטבה בלעדית וחסרת תקדים</span>
+            <span class="old-price-line">100 ש"ח</span>
+            <span class="new-price-highlight">20 ש"ח</span>
+
+            <div class="punchline-box">
+                <p class="punchline-text">
+                    "אנחנו לא רק בונים בניינים, אנחנו יוצקים ביטחון לחיים שלכם. בנדל"ן ישראלי בבולגריה, הפכנו את ההשקעה הכלכלית להבטחה משפחתית – כדי שהשקט שלכם יתחיל כבר מהצעד הראשון."
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="premium-benefits-box">
+        <div class="benefit-item"><span class="gold-text">חשיפה בלעדית</span> – ניתוח עסקאות בזמן אמת</div>
+        <div class="benefit-item"><span class="gold-text">ליווי אישי</span> – בקרה מקצה לקצה</div>
+        <div class="benefit-item"><span class="gold-text">מודלים להשקעה</span> – יזמות</div>
+        <div style="font-size: 1.5rem; font-weight: 800; color: #D4AF37; margin-top: 15px;">STUDY CASE מהשטח</div>
+        <div style="font-size: 1.2rem; font-weight: 700; color: #D4AF37;">איך לייצר רווח הון מהשקעה בתקציב נמוך</div>
+    </div>
+
+</div>
+
+<div class="syllabus-wrapper">
+
+    <div class="syllabus-header">
+        <h2>סילבוס המיני-קורס: משקיעים בביטחון</h2>
+        <p>שלושה ימים של ליווי אסטרטגי מחזון ועד לחתימה על עסקה מנצחת</p>
+        <div class="gold-line"></div>
+    </div>
+
+    <div class="syllabus-grid">
+        <div class="day-card">
+            <div class="card-head">
+                <span class="phase">שלב א'</span>
+                <h3>יום ראשון: היסודות וההזדמנות</h3>
+            </div>
+            <div class="card-body">
+                <span class="goal-text">המטרה: הבנת פוטנציאל השוק וניקוי רעשים.</span>
+                <ul class="points-list">
+                    <li><span class="icon">📍</span><span><strong>ניתוח שוק 2026:</strong> למה בורגס היא היעד החם ביותר כרגע באירופה?</span></li>
+                    <li><span class="icon">📍</span><span><strong>מלכודת האינפלציה:</strong> איך נדל"ן בבולגריה מגן על הכסף שלכם.</span></li>
+                    <li><span class="icon">📍</span><span><strong>השקעה בתקציב נמוך:</strong> דריסת רגל ראשונה עם הון עצמי נגיש.</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="card-head">
+                <span class="phase">שלב ב'</span>
+                <h3>יום שני: המנגנון לייצור רווח</h3>
+            </div>
+            <div class="card-body">
+                <span class="goal-text">המטרה: בניית האסטרטגיה לרווח דו-ספרתי.</span>
+                <ul class="points-list">
+                    <li><span class="icon">💰</span><span><strong>מודל השכרת נכסים:</strong> ייצור תזרים מזומנים חודשי יציב.</span></li>
+                    <li><span class="icon">💰</span><span><strong>מדריך מיסוי ואירו:</strong> היערכות לכניסת בולגריה לגוש האירו.</span></li>
+                    <li><span class="icon">💰</span><span><strong>איתור עסקאות:</strong> הסודות של צוות Bulgaria Smart Invest בשטח.</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="card-head">
+                <span class="phase">שלב ג'</span>
+                <h3>יום שלישי: מחזון לביצוע</h3>
+            </div>
+            <div class="card-body">
+                <span class="goal-text">המטרה: ליווי יד ביד עד לחתימה על העסקה.</span>
+                <ul class="points-list">
+                    <li><span class="icon">🖋️</span><span><strong>Case Studies:</strong> הצצה לעסקאות אמת שבוצעו וחתומות בשטח.</span></li>
+                    <li><span class="icon">🖋️</span><span><strong>תהליך ליווי מקצה לקצה:</strong> בקרה משפטית וניהול מלא עבורכם.</span></li>
+                    <li><span class="icon">🖋️</span><span><strong>תוכנית פעולה:</strong> בניית תוכנית ההשקעה האישית ויציאה לדרך.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="special-offer-box">
+        <div class="offer-title">הזדמנות למשקיעים רציניים בלבד:</div>
+        <div class="price-wrap">
+            <span class="old-price-syllabus">100 ש"ח</span>
+            <span class="new-price-syllabus">20 ש"ח</span>
+        </div>
+        <div class="punchline-text-syllabus">
+            "גם אם אתם מכירים את המספרים, הליווי בשטח הוא ההבדל בין דירה על הנייר לנכס שעובד בשבילכם. ה-20 ש"ח הם ההשקעה הקטנה ביותר שתעשו כדי למנוע את הטעות הגדולה ביותר שלכם."
+        </div>
+
+        <div class="cta-button-container">
+            <a href="https://morning.co.il" class="cta-button">אני רוצה להרשם לקורס</a>
+        </div>
+    </div>
+
+    <div class="syllabus-footer">
+        <p>
+            <strong>בכל יום נבנה יחד נדבך נוסף של ידע וביטחון, עד שיהיה לכם ברור בדיוק איך לבצע את ההשקעה הבאה שלכם בראש שקט.</strong>
+        </p>
+    </div>
+
+</div>
+
+<footer class="luxury-footer">
+    <div class="footer-content">
+
+        <span class="footer-label">צרו קשר ישיר:</span>
+
+        <div class="contact-grid">
+            <div class="contact-group">
+                <strong>נדל"ן ישראלי בבולגריה</strong>
+                <a href="tel:0549718372" class="contact-link">054-9718372</a>
+            </div>
+            <div class="contact-group">
+                <strong>השקעות נדל"ן מסביב לעולם</strong>
+                <a href="tel:+972525363257" class="contact-link">052-5363257</a>
+            </div>
+            <div class="contact-group">
+                <strong>מענה במייל</strong>
+                <a href="mailto:yeheli09@gmail.com" class="contact-link" style="font-size: 1.1rem;">yeheli09@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="delivery-info">
+            <strong>אספקת המוצר:</strong> הגישה לקורס תישלח אליכם במייל מיד לאחר אישור התשלום.
+        </div>
+
+        <div class="legal-links">
+            <a href="/takanon">תקנון ותנאי שימוש</a>
+            <span style="color: rgba(212, 175, 55, 0.3);">|</span>
+            <a href="/privacy">מדיניות פרטיות</a>
+        </div>
+
+        <div class="security-info">
+            🛡️ רכישה מאובטחת: הסליקה באתר מבוצעת בצורה מוצפנת ע"י חברת <strong>Morning</strong>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>
